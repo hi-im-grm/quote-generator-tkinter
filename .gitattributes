@@ -1,2 +1,42 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+from tkinter import *
+import random
+import customtkinter
+
+app = customtkinter.CTk()
+app.title("Generator Cytatów")
+app.geometry("800x400")
+
+#Nagłówek
+label = customtkinter.CTkLabel(app, text="Generator Cytatów", font=('Bold', 40))
+label.pack(pady="40")
+
+#Cytaty do losowania
+quotes = (
+    "Działaj, nawet jeśli boisz się porażki. Odwaga jest kluczem do sukcesu.",
+    "Marzenia są planem na przyszłość, jeśli tylko zaczniesz działać.",
+    "Przestań odkładać na później to, co może zmienić twoje życie.",
+    "Każdy dzień jest szansą na nowy początek.",
+    "Nawet najdłuższa podróż zaczyna się od pierwszego kroku.",
+    "Sukces to suma małych kroków wykonywanych codziennie.",
+    "Nie czekaj na idealny moment. Działaj teraz.",
+    "Mierz wysoko, bo jedyną granicą jest twój umysł.",
+    "Bądź zmianą, którą chcesz zobaczyć w świecie.",
+    "Cierpliwość i wytrwałość są drogą do spełnienia marzeń."
+)
+
+#Mechanizm losujący
+def random_quote():
+    random_quote = random.choice(quotes)
+    label.configure(text=random_quote)
+
+#Miejsce w którym mają pojawiać się cytaty
+label = customtkinter.CTkLabel(app, text="Kliknij przycisk aby wylosować jakiś cytat", font=('Bold', 20))
+label.pack(pady="40")
+
+#Przycisk z losowaniem
+button = customtkinter.CTkButton(app, text="Losowanie", command=random_quote)
+button.pack()
+
+app.mainloop()
